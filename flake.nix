@@ -22,11 +22,16 @@
 
       pkgs = import nixpkgs { inherit system; };
       images = import ./pkgs/images { inherit pkgs system; };
+      charts = import ./pkgs/charts { inherit pkgs; };
 
     in with pkgs.lib; rec {
-      packages = images;
+      packages = images // charts;
 
-      checks =  attrsets.foldAttrs (n: a: n // a ) {}  (
+      # Since we're using the `eachSystem` function, `$ flake check` would
+      # normally only check the docker pulls for the images which match the
+      # current systems architecture. We get around this by adding every
+      # architectures image into each system, so check will verify all of them.
+      checks = packages // attrsets.foldAttrs (n: a: n // a ) {}  (
         forEach targetSystems (checkSystem:
           mapAttrs' (name: image:
             nameValuePair "${checkSystem}/${name}" image
