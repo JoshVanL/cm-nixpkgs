@@ -9,6 +9,7 @@ let
     // (import ./cert-manager-controller.nix {})
     // (import ./csi-node-driver-registrar.nix {})
     // (import ./busybox.nix {})
+    // (import ./kindest-node.nix {})
   ;
 
   # Build the resulting derivation name for this image.
