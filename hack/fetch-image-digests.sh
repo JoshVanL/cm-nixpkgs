@@ -107,7 +107,7 @@ EOF
       --arch ${ARCH} \
       --json)
 
-    echo "        ${ARCH} = $(echo ${IMAGE} | jq .sha256);"
+    echo "          ${ARCH} = $(echo ${IMAGE} | jq .sha256);"
 
   done
   cat << EOF

@@ -41,11 +41,9 @@
 
       # mkShell is able to setup the nix shell environment (`$ nix develop`).
         devShells.default = pkgs.mkShell {
-          buildInputs = [
-            pkgs.bash
-            pkgs.getopt
-            pkgs.nix-prefetch-docker
-            pkgs.jq
+          buildInputs = with pkgs; [
+            bash getopt jq
+            nix-prefetch-docker
           ];
         };
   });
