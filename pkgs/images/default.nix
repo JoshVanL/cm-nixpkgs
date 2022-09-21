@@ -7,6 +7,7 @@ let
     // (import ./cert-manager-cainjector.nix {})
     // (import ./cert-manager-webhook.nix {})
     // (import ./cert-manager-controller.nix {})
+    // (import ./cert-manager-acmesolver.nix {})
     // (import ./csi-node-driver-registrar.nix {})
     // (import ./busybox.nix {})
     // (import ./kindest-node.nix {})
